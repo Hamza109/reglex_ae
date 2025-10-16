@@ -1,0 +1,54 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Author {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  bio       String?
+  avatar    String?  // optional profile image
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  blogs     Blog[]
+}
+
+enum BlogStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model Blog {
+  id           Int        @id @default(autoincrement())
+  title        String
+  slug         String     @unique
+  content_json Json       // stores the tiptap editor JSON
+  content_html String     @db.Text // stores rendered HTML version (TEXT for large content)
+  thumbnail    String?    // optional cover image
+  status       BlogStatus @default(DRAFT)
+  authorId     Int?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  
+  // Relations
+  author       Author?    @relation(fields: [authorId], references: [id])
+}
+
+model Testimonial {
+  id        Int      @id @default(autoincrement())
+  name      String
+  company   String   // company or designation
+  message   String
+  createdAt DateTime @default(now())
+}
