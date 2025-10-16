@@ -24,20 +24,7 @@ export async function POST(req: Request) {
       tls: { ciphers: "TLSv1.2" },
     });
 
-    // Log a safe summary of transporter configuration (no secrets)
-    console.log("[contact] transporter:", {
-      host: process.env.NEXT_PUBLIC_SMTP_HOST || "smtp.office365.com",
-      port: Number(process.env.NEXT_PUBLIC_SMTP_PORT || 587),
-      secure: false,
-      requireTLS: true,
-      authMethod: "LOGIN",
-      hasUser: !!process.env.NEXT_PUBLIC_SMTP_USER,
-      hasPass: !!process.env.NEXT_PUBLIC_SMTP_PASS,
-      from:
-        process.env.NEXT_PUBLIC_MAIL_FROM || process.env.NEXT_PUBLIC_SMTP_USER,
-      to:
-        process.env.NEXT_PUBLIC_CONTACT_TO || process.env.NEXT_PUBLIC_SMTP_USER,
-    });
+    // Debug logs removed
 
     const html = `
       <h2>New Contact Request</h2>
@@ -49,10 +36,7 @@ export async function POST(req: Request) {
       <p>${(message || "").replace(/\n/g, "<br/>")}</p>
     `;
 
-    console.log("smptp_user:", process.env.NEXT_PUBLIC_SMTP_USER);
-    console.log("smptp_pass:", process.env.NEXT_PUBLIC_SMTP_PASS);
-    console.log("mail_from:", process.env.NEXT_PUBLIC_MAIL_FROM);
-    console.log("contact_to:", process.env.NEXT_PUBLIC_CONTACT_TO);
+    // Debug logs removed
 
     await transporter.sendMail({
       from:
@@ -64,11 +48,8 @@ export async function POST(req: Request) {
       html,
     });
 
- 
-
     return NextResponse.json({ ok: true });
   } catch (err) {
-
     console.error("contact api error:", err);
     return NextResponse.json(
       { ok: false, error: "Failed to send" },

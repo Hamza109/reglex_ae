@@ -57,7 +57,6 @@ export default function TestimonialEditPage({
         message,
       });
 
-      console.log("💬 Testimonial updated successfully:", result);
       alert("Testimonial updated successfully!");
       router.push("/admin/testimonials/view");
     } catch (error: any) {

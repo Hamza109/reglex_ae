@@ -22,7 +22,7 @@ export default function TestimonialViewPage() {
     if (confirm("Are you sure you want to delete this testimonial?")) {
       try {
         await deleteTestimonial.mutateAsync(id);
-        console.log("🗑️ Testimonial deleted successfully");
+        
       } catch (error) {
         console.error("❌ Failed to delete testimonial:", error);
         alert("Failed to delete testimonial");

@@ -21,11 +21,6 @@ export default function LoginPage() {
         password,
       });
 
-      console.log("🚀 Login successful!");
-      console.log("Response:", result);
-      console.log("Token:", result.token);
-      console.log("Author:", result.author);
-
       // Store token and user in secure cookies
       setAuthToken(result.token);
       setUser(result.author);

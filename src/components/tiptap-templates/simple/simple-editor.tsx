@@ -203,7 +203,7 @@ export const SimpleEditor = React.forwardRef<
 
   // Debug initial content
   React.useEffect(() => {
-    console.log("📝 SimpleEditor initialContent:", initialContent);
+    
   }, [initialContent]);
 
   const editor = useEditor({
@@ -265,7 +265,7 @@ export const SimpleEditor = React.forwardRef<
   // Update editor content when initialContent changes
   React.useEffect(() => {
     if (editor && initialContent) {
-      console.log("📝 Updating editor content:", initialContent);
+      
       editor.commands.setContent(initialContent);
     }
   }, [editor, initialContent]);

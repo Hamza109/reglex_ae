@@ -19,7 +19,6 @@ export default function BlogViewPage() {
     if (confirm("Are you sure you want to delete this blog?")) {
       try {
         await deleteBlog.mutateAsync(id);
-        console.log("🗑️ Blog deleted successfully");
       } catch (error) {
         console.error("❌ Failed to delete blog:", error);
         alert("Failed to delete blog");

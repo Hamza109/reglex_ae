@@ -26,9 +26,7 @@ export default function EditBlogPage({ params }: EditBlogPageProps) {
 
   useEffect(() => {
     if (blog) {
-      console.log("📝 Loading blog content:", blog);
-      console.log("📝 Blog title:", blog.title);
-      console.log("📝 Blog content_json:", blog.content_json);
+      
       setTitle(blog.title);
       setContentJSON(blog.content_json as JSONContent);
     }
@@ -52,7 +50,7 @@ export default function EditBlogPage({ params }: EditBlogPageProps) {
         status: "DRAFT",
       });
 
-      console.log("📝 Draft updated successfully:", result);
+      
       alert("Draft updated successfully!");
     } catch (error: any) {
       console.error("❌ Failed to update draft:", error);
@@ -78,8 +76,7 @@ export default function EditBlogPage({ params }: EditBlogPageProps) {
       const htmlContent = editorRef.current.getHTML();
       const jsonContent = editorRef.current.getJSON();
 
-      console.log("📝 HTML Content:", htmlContent);
-      console.log("📝 JSON Content:", jsonContent);
+      
 
       const result = await updateBlog.mutateAsync({
         id: blogId,
@@ -90,7 +87,7 @@ export default function EditBlogPage({ params }: EditBlogPageProps) {
         status: "PUBLISHED",
       });
 
-      console.log("🚀 Blog updated successfully:", result);
+      
       alert("Blog updated successfully!");
       router.push("/admin/blogs/view");
     } catch (error: any) {

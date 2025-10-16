@@ -29,7 +29,6 @@ export default function TestimonialAddPage() {
         message,
       });
 
-      console.log("💬 Testimonial created successfully:", result);
       alert("Testimonial created successfully!");
       router.push("/admin/testimonials/view");
     } catch (error: any) {

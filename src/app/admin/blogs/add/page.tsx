@@ -37,7 +37,6 @@ export default function BlogAddPage() {
         authorId: null, // Will be set by backend from JWT
       });
 
-      console.log("📝 Draft saved successfully:", result);
       alert("Draft saved successfully!");
     } catch (error: any) {
       console.error("❌ Failed to save draft:", error);
@@ -65,9 +64,6 @@ export default function BlogAddPage() {
       const htmlContent = editorRef.current.getHTML();
       const jsonContent = editorRef.current.getJSON();
 
-      console.log("📝 HTML Content:", htmlContent);
-      console.log("📝 JSON Content:", jsonContent);
-
       const result = await createBlog.mutateAsync({
         title,
         content_json: jsonContent,
@@ -77,7 +73,6 @@ export default function BlogAddPage() {
         authorId: null, // Will be set by backend from JWT
       });
 
-      console.log("🚀 Blog published successfully:", result);
       alert("Blog published successfully!");
       router.push("/admin/blogs/view");
     } catch (error: any) {
