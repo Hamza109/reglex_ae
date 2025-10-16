@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface IndexNavbarProps {
   fixed?: boolean;
@@ -34,10 +35,13 @@ export default function IndexNavbar({
         <div className='container mx-auto px-4'>
           <div className='flex items-center justify-between h-16'>
             <Link href='/' className='flex items-center'>
-              <img
-                src='/WHITE_LOGO.jpg'
+              <Image
+                src='/WHITE_LOGO.webp'
                 alt='RegLex Logo'
-                className='h-12 w-auto object-contain'
+                width={160}
+                height={60}
+                priority
+                className='h-55 w-auto object-contain'
               />
             </Link>
           </div>
@@ -65,9 +69,11 @@ export default function IndexNavbar({
         <div className='flex items-center justify-between h-20'>
           {/* Logo */}
           <Link href='/' className='flex items-center'>
-            <img
-              src='/WHITE_LOGO.png'
+            <Image
+              src='/WHITE_LOGO.webp'
               alt='RegLex Logo'
+              width={200}
+              height={60}
               className='h-55 w-auto object-contain max-w-full'
             />
           </Link>

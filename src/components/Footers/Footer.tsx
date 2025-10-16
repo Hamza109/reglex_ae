@@ -16,7 +16,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
             <div className='px-4'>
               <div className='flex items-center justify-center lg:justify-start mb-2'>
                 <img
-                  src='/BLUE_LOGO.jpg'
+                  src='/BLUE_LOGO.webp'
                   alt='RegLex Logo'
                   className='h-12 w-auto object-contain'
                 />

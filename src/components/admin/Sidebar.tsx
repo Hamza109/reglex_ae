@@ -11,7 +11,7 @@ export function Sidebar() {
     <aside className='text-white bg-primary p-6 shadow-xl flex flex-col'>
       <div className='flex items-center gap-3 justify-center'>
         <div className='relative h-16 w-24 bg-white/10 backdrop-blur'>
-          <img src='/BLUE_LOGO.jpg' alt='Reglex' className='h-20 w-[200px]' />
+          <img src='/BLUE_LOGO.webp' alt='Reglex' className='h-20 w-[200px]' />
         </div>
       </div>
 

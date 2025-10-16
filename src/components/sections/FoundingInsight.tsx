@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { motion, easeOut } from "framer-motion";
 
 export default function FoundingInsight() {
@@ -39,11 +40,16 @@ export default function FoundingInsight() {
             viewport={{ once: true }}
           >
             <div className='text-center flex flex-col items-center '>
-              <img
-                src='/founding.png'
-                alt='Jibran Ahmed Tak'
-                className='w-full h-72 sm:h-96 lg:h-[32rem] object-cover rounded-lg shadow-lg mb-6'
-              />
+              <div className='relative w-full h-72 sm:h-96 lg:h-[32rem] mb-6 rounded-lg shadow-lg overflow-hidden'>
+                <Image
+                  src='/founding.webp'
+                  alt='Jibran Ahmed Tak'
+                  fill
+                  sizes='(max-width: 1024px) 100vw, 40vw'
+                  className='object-cover'
+                  priority={false}
+                />
+              </div>
               <motion.h3
                 className='text-xl sm:text-2xl font-bold text-primary mb-2'
                 initial={{ opacity: 0 }}
@@ -110,11 +116,15 @@ export default function FoundingInsight() {
                 transition={{ duration: 0.6, ease: easeOut, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                <img
-                  src='/image.png'
-                  alt='Jibran Ahmed Tak Signature'
-                  className='w-80 h-26 object-contain'
-                />
+                <div className='relative w-80 h-20'>
+                  <Image
+                    src='/image.webp'
+                    alt='Jibran Ahmed Tak Signature'
+                    fill
+                    sizes='320px'
+                    className='object-contain'
+                  />
+                </div>
               </motion.div>
             </div>
           </motion.div>

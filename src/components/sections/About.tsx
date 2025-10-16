@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function About() {
@@ -15,11 +16,15 @@ export default function About() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <img
-              src='/reglexAbout.jpeg'
-              alt='About RegLex'
-              className='w-full h-64 sm:h-80 lg:h-96 object-cover rounded-lg shadow-lg'
-            />
+            <div className='relative w-full h-64 sm:h-80 lg:h-96 rounded-lg shadow-lg overflow-hidden'>
+              <Image
+                src='/reglexAbout.webp'
+                alt='About RegLex'
+                fill
+                sizes='(max-width: 1024px) 100vw, 40vw'
+                className='object-cover'
+              />
+            </div>
           </motion.div>
 
           {/* Content - Fade & Slide In from Left */}

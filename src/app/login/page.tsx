@@ -41,7 +41,7 @@ export default function LoginPage() {
   return (
     <div className='min-h-screen bg-primary flex flex-col items-center justify-center p-6 relative'>
       <div className='absolute top-6 left-1/2 -translate-x-1/2'>
-        <img src='/BLUE_LOGO.jpg' alt='Reglex' className='h-40 w-auto' />
+        <img src='/BLUE_LOGO.webp' alt='Reglex' className='h-40 w-auto' />
       </div>
       <div className='w-full max-w-sm bg-white text-black rounded-xl shadow-xl p-6 space-y-5'>
         <div className='space-y-1 text-center'>

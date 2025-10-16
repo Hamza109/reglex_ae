@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { motion, easeOut } from "framer-motion";
 
 const fadeInLeft = {
@@ -52,11 +53,14 @@ export default function AdvisoryPortfolio() {
               className='w-full md:w-6/12 px-4'
               {...(service.reverse ? fadeInRight : fadeInLeft)}
             >
-              <div className='relative'>
-                <img
+              <div className='relative w-full h-96 rounded-lg shadow-lg overflow-hidden'>
+                <Image
                   src={service.image}
                   alt={service.title}
-                  className='w-full h-96 object-cover rounded-lg shadow-lg'
+                  fill
+                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px'
+                  className='object-cover'
+                  priority={false}
                 />
               </div>
             </motion.div>
@@ -89,7 +93,7 @@ export default function AdvisoryPortfolio() {
 const services = [
   {
     title: "Regulatory & Supervisory Advisory",
-    image: "/advisory1.png",
+    image: "/advisory1.webp",
     reverse: false,
     points: [
       "Licensing applications, regulatory submissions, and ongoing compliance monitoring for financial institutions.",
@@ -99,7 +103,7 @@ const services = [
   },
   {
     title: "AML/CFT & Sanctions Programs",
-    image: "/advisory2.png",
+    image: "/advisory2.webp",
     reverse: true,
     points: [
       "Design and implementation of comprehensive AML/CFT frameworks aligned with UAE and international standards.",
@@ -109,7 +113,7 @@ const services = [
   },
   {
     title: "Independent MLRO & Compliance Officer Services",
-    image: "/advisory3.png",
+    image: "/advisory3.webp",
     reverse: false,
     points: [
       "Provision of outsourced or interim MLRO / Compliance Officer functions for regulated firms.",
@@ -119,7 +123,7 @@ const services = [
   },
   {
     title: "Governance, Risk & Control Architecture",
-    image: "/advisory4.png",
+    image: "/advisory4.webp",
     reverse: true,
     points: [
       "Design and enhancement of Board and Committee frameworks, governance charters, and accountability structures.",
@@ -129,7 +133,7 @@ const services = [
   },
   {
     title: "Financial Crime & Conduct Risk Diagnostics",
-    image: "/advisory5.png",
+    image: "/advisory5.webp",
     reverse: false,
     points: [
       "Comprehensive diagnostics including EWRA, PFNRA, and Anti-Bribery & Corruption (ABC) reviews.",
@@ -139,7 +143,7 @@ const services = [
   },
   {
     title: "Specialized Sector & Emerging Risks",
-    image: "/advisory6.png",
+    image: "/advisory6.webp",
     reverse: true,
     points: [
       "Regulatory and compliance advisory for DNFBPs (Real Estate, Precious Metals, Legal, Notaries, Accounting).",
@@ -149,7 +153,7 @@ const services = [
   },
   {
     title: "Training & Regulatory Capacity Building",
-    image: "/advisory7.png",
+    image: "/advisory7.webp",
     reverse: false,
     points: [
       "Tailored training programs for Boards, Senior Management, and Compliance Teams.",

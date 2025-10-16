@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function ReglexEdge() {
@@ -7,7 +8,6 @@ export default function ReglexEdge() {
     <section id='reglex-edge' className='py-20 bg-gray-100 scroll-mt-24'>
       <div className='container mx-auto px-4'>
         <div className='flex flex-col lg:flex-row items-center gap-8 lg:gap-12'>
-
           {/* Image - Mobile First */}
           <motion.div
             className='w-full lg:w-5/12 order-1 lg:order-1'
@@ -16,11 +16,15 @@ export default function ReglexEdge() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <img
-              src='/reglexEdge.jpeg'
-              alt='RegLex Edge'
-              className='w-full h-64 sm:h-80 lg:h-96 object-cover rounded-lg shadow-lg'
-            />
+            <div className='relative w-full h-64 sm:h-80 lg:h-96 rounded-lg shadow-lg overflow-hidden'>
+              <Image
+                src='/reglexEdge.webp'
+                alt='RegLex Edge'
+                fill
+                sizes='(max-width: 1024px) 100vw, 40vw'
+                className='object-cover'
+              />
+            </div>
           </motion.div>
 
           {/* Content - Mobile First */}
