@@ -27,7 +27,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
                   href='https://linkedin.com/company/reglex-global'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='bg-blue-600 text-white shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-flex hover:bg-blue-700 transition-colors duration-200'
+                  className='bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-flex hover:bg-blue-50 transition-colors duration-200'
                 >
                   <i className='fab fa-linkedin'></i>
                 </a>
@@ -35,7 +35,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
                   href='https://instagram.com/reglexglobal'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='bg-pink-500 text-white shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-flex hover:bg-pink-600 transition-colors duration-200'
+                  className='bg-white text-pink-500 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-flex hover:bg-pink-50 transition-colors duration-200'
                 >
                   <i className='fab fa-instagram'></i>
                 </a>
@@ -43,13 +43,13 @@ export default function Footer({ onOpenContact }: FooterProps) {
                   href='https://wa.me/971501234567'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='bg-green-500 text-white shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-flex hover:bg-green-600 transition-colors duration-200'
+                  className='bg-white text-green-500 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-flex hover:bg-green-50 transition-colors duration-200'
                 >
                   <i className='fab fa-whatsapp'></i>
                 </a>
                 <a
                   href='mailto:info@reglexglobal.com'
-                  className='bg-red-500 text-white shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-flex hover:bg-red-600 transition-colors duration-200'
+                  className='bg-white text-red-500 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-flex hover:bg-red-50 transition-colors duration-200'
                 >
                   <i className='fas fa-envelope'></i>
                 </a>
@@ -65,7 +65,10 @@ export default function Footer({ onOpenContact }: FooterProps) {
               <h4 className='text-2xl font-semibold text-white mb-3'>
                 Contact Us
               </h4>
-              <p className='text-gray-200 mb-4'>Partner with RegLex to navigate complex regulations confidently and achieve seamless compliance.</p>
+              <p className='text-gray-200 mb-4'>
+                Partner with RegLex to navigate complex regulations confidently
+                and achieve seamless compliance.
+              </p>
               <div className='flex flex-col sm:flex-row gap-3'>
                 {
                   <button

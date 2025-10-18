@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 import {
   Dialog,
   DialogContent,
@@ -24,6 +25,7 @@ export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -38,24 +40,47 @@ export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.ok) throw new Error(data.error || "Failed to send");
 
-      setFormData({ name: "", email: "", company: "", phone: "", message: "" });
-      onClose();
-      alert("Thanks! Your message has been sent.");
+    try {
+      // Initialize EmailJS with your public key
+      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "");
+
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "",
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          message: formData.message,
+          to_email: "admin@rlgc.ae", // Your receiving email
+        }
+      );
+
+      if (result.status === 200) {
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          message: "",
+        });
+        setShowSuccessDialog(true);
+      } else {
+        throw new Error("Failed to send email");
+      }
     } catch (err) {
-      console.error(err);
+      console.error("EmailJS error:", err);
       alert("Sorry, failed to send. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleSuccessClose = () => {
+    setShowSuccessDialog(false);
+    onClose();
   };
 
   return (
@@ -187,6 +212,30 @@ export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
           </div>
         </form>
       </DialogContent>
+
+      {/* Success Dialog */}
+      <Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
+        <DialogContent className='w-full max-w-[400px] p-8 rounded-lg'>
+          <div className='text-center'>
+            <div className='mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mb-4'>
+              <i className='fas fa-envelope text-2xl text-primary'></i>
+            </div>
+            <h3 className='text-xl font-semibold text-gray-900 mb-2'>
+              Message Sent Successfully!
+            </h3>
+            <p className='text-gray-600 mb-6'>
+              Thank you for contacting RegLex Global. We'll get back to you
+              soon.
+            </p>
+            <button
+              onClick={handleSuccessClose}
+              className='px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-200'
+            >
+              Close
+            </button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </Dialog>
   );
 }
